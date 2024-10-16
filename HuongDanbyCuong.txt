@@ -1,0 +1,38 @@
+1. conda create -n tf1.15 python=3.6.8
+1.1 conda activate tf1.15
+
+2. cd src/githubs
+2.1. git clone https://github.com/felixchenfy/ildoonet-tf-pose-estimation
+''change folder name tf-pose-estimation''
+
+3. conda install tensorflow-gpu=1.15
+
+4. cd src/githubs/tf-pose-estimation
+4.1. pip install -r requirements.txt
+4.2. pip install jupyter tqdm (show tiến trình)
+	
+5. pip install tensorflow-gpu==1.15
+6. pip install swig
+
+7. pip install "git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI"
+đọc, xử lý, trực quan hóa dữ liệu từ coco
+đánh giá hiệu suất
+
+8. cd /src/githubs/tf-pose-estimation/tf_pose/pafprocess
+8.1. swig -python -c++ pafprocess.i && python setup.py build_ext --inplace
+
+9. cd Realtime-Action-Recognition-master
+9.1. pip install -r requirements.txt
+if error use pip install opencv-python==4.2.0.34  # or any compatible version
+
+9.2. pip install scikit-learn==0.19.1
+
+10. Nhận diện bằng webcam
+python src\s5_test.py --model_path model\trained_classifier.pickle --data_type webcam --data_path 0 --output_folder output
+
+11. Nhận diện bằng video file
+python src/s5_test.py --model_path model/trained_classifier.pickle --data_type video --data_path data_test/video/excercise.avi --output_folder output/
+
+12. Nhận diện trực tiếp trên folder của các frames ảnh
+## Test on a folder of images
+python src\s5_test.py --model_path model\trained_classifier.pickle --data_type folder --data_path data_test/images/ --output_folder output
